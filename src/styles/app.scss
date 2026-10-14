@@ -1,0 +1,112 @@
+@use "sass:map";
+@use "sass:color";
+
+.app
+{
+    width:100%;
+    min-height: 100vh;
+}
+
+*
+{
+    padding: 0;
+    margin: 0;
+    
+}
+
+body
+{
+    display: block;
+    
+    //background-color: var(--color-primary);
+}
+
+
+$themes: 
+(
+    light: 
+    (
+        primary: #FFFFFF,
+        secondary: #F0F4F8,
+        identity: #316ca0,
+        hover: #285882,
+        contrast: #FF5722,
+        text: #1A1D24,s
+    
+        bg-gradient-first: #FFFFFF,
+        bg-gradient-second: #E0EBF5,
+        bg-gradient-third: #75AADB
+        
+    ),
+    dark: 
+    (
+        primary: #000000,
+        secondary: #1A1D24,
+        identity: #316ca0,
+        hover: #75AADB,
+        contrast: #FF5722,
+        text: #E4E9F2,
+        
+        bg-gradient-first: #000000,
+        bg-gradient-second: #1C3D5A,
+        bg-gradient-third: #316ca0
+    )
+);
+
+:root 
+{
+    @each $name, $value in map.get($themes, light) 
+    {
+        --color-#{$name}: #{$value};
+    }
+
+    @media (prefers-color-scheme: dark) 
+    {
+        @each $name, $value in map.get($themes, dark) 
+        {
+        --color-#{$name}: #{$value};
+        }
+    }
+}
+
+[data-theme="dark"] 
+{
+    @each $name, $value in map.get($themes, dark) 
+    {
+        --color-#{$name}: #{$value};
+    }
+}
+
+[data-theme="light"] 
+{
+    @each $name, $value in map.get($themes, light) 
+    {
+        --color-#{$name}: #{$value};
+    }
+}
+
+@keyframes gradient-shift 
+{
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes dotty {
+    0%   { content: ''; }
+    25%  { content: '.'; }
+    50%  { content: '..'; }
+    75%  { content: '...'; }
+    100% { content: ''; }
+}
+
+@keyframes fade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fade-out 
+{
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}

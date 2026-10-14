@@ -1,0 +1,108 @@
+.additional {
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+
+    height: 45px;
+    overflow: hidden;
+
+    //border-radius: 15px 15px 0px 0px;
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+
+    gap: 25px;
+
+    animation: additional-appear 2s ease forwards;
+
+    &__separator {
+        color: var(--color-text);
+        font-size: 20px;
+    }
+
+    &__ul {
+        list-style: none;
+        flex-wrap: nowrap;
+        overflow: hidden;
+
+        height: 100%;
+        width: 100%;
+        padding: 0 15px 0 15px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+
+        &--links 
+        {
+            justify-content: right;
+        }
+
+        &--socials {
+
+            justify-content: center;
+        }
+
+    }
+
+    &__item {
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--social {
+            font-family: "Inconsolata", monospace;
+            text-decoration: none;
+            font-size: 11px;
+            color: var(--color-text);
+            margin: 0px 15px 0px 5px;
+            white-space: nowrap;
+        }
+    }
+
+    &__link {
+        font-family: "Inconsolata", monospace;
+        text-decoration: none;
+        color: var(--color-text);
+        font-size: 15px;
+        padding: 0px 10px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.1s ease;
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+
+        &:hover {
+            color: var(--color-primary);
+            background-color: var(--color-contrast);
+        }
+
+        &--active {
+            color: var(--color-contrast);
+
+        }
+    }
+}
+
+@keyframes additional-appear
+{
+    0% { 
+        bottom: -1000px; 
+    }
+    100% { 
+        bottom: 0; 
+    }
+}
