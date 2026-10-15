@@ -4,6 +4,8 @@ import { Link, useLocation } from "wouter";
 
 import { FaInstagram, FaLinkedin, FaFacebook} from "react-icons/fa";
 
+import ThemeToggleButton from "../theme/ThemeToggleButton";
+
 const Additional = () => {
 
     return (
@@ -31,6 +33,10 @@ const Additional = () => {
             <span className="additional__separator">|</span>
 
             <ul className="additional__ul additional__ul--links">
+
+                <li className="additional__item">
+                    <ThemeToggleButton/>
+                </li>
 
                 <li className="additional__item">
                     <CustomLink name={"Ubicaciones"} to={"/locations"} />
