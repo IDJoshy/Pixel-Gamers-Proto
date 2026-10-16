@@ -182,6 +182,7 @@
             .navbar__icon--hamburger
             {
                 color: var(--color-contrast);
+                
             }
         }
     }
@@ -190,6 +191,7 @@
     {
         font-size: 20px;
         color: var(--color-text);
+        user-select: none;
     }
 }
 

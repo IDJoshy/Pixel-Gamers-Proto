@@ -11,27 +11,15 @@ import { IoMdClose } from "react-icons/io";
 const Menus = () => {
 
     const [isSidebarOpen, setOpenSidebar] = useState(false);
+
     const sidebarRef = useRef();
+    const navbarRef = useRef();
 
     const toggleSidebar = () => setOpenSidebar((prev) => !prev);
-
-    useEffect(() => {
-        const handler = (event) => {
-            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-                setOpenSidebar(false);
-            }
-        };
-
-        document.addEventListener("click", handler);
-
-        return () => {
-            document.removeEventListener("click", handler);
-        };
-    }, [sidebarRef]);
-
+    
     return (
         <>
-            <div className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
+            <div ref={sidebarRef} className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
 
                 <div className="sidebar__container">
 
@@ -39,7 +27,7 @@ const Menus = () => {
 
             </div>
 
-            <div className="navbar">
+            <div ref={navbarRef} className="navbar">
 
                 <div className="navbar__container navbar__container--upper">
 
@@ -59,7 +47,7 @@ const Menus = () => {
                                 <NavbarLink name={"Sign-Up"} to={"/signup"} childen={""} />
 
                                 {/* Sidebar */}
-                                <button onClick={toggleSidebar} className="navbar__button navbar__button--hamburger">
+                                <button ref={sidebarRef} onClick={toggleSidebar} className="navbar__button navbar__button--hamburger">
                                     {isSidebarOpen ? <IoMdClose className="navbar__icon navbar__icon--hamburger" /> : <RxHamburgerMenu className="navbar__icon navbar__icon--hamburger" />}
                                 </button>
 
