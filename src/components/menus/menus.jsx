@@ -1,19 +1,29 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import "../../styles/navbar.scss";
+import "../../styles/sidebar.scss";
 
 import Pixel from "../../assets/pixel.png";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
-const NavBar = () => {
+const Menus = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className="navbar">
+        <>
 
+        <div className="sidebar sidebar--active">
+
+            <div className="sidebar__container"> 
+
+            </div>
+
+        </div>
+        
+        <div className="navbar">
 
             <div className="navbar__container navbar__container--upper">
 
@@ -39,19 +49,19 @@ const NavBar = () => {
 
                         </div>
                     </li>
-
-
                 </ul>
 
             </div>
 
         </div>
+
+        </>
     );
 };
 
 
 
-export default NavBar;
+export default Menus;
 
 
 const NavbarLink = (props) => {

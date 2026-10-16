@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Route, Link, Router, Switch } from 'wouter';
 
 //Components
-import NavBar from './components/navbar/navbar';
+import Menus from './components/menus/menus';
 import Additional from './components/additional/additional';
 
 //Routes
@@ -19,7 +19,7 @@ function App() {
     <>
       <Router hook={undefined}>
         <div className='app'>
-          <NavBar/>
+          <Menus/>
           <Additional/>
           <Switch>
             <Route path={"/"} component={NotFound}/>
