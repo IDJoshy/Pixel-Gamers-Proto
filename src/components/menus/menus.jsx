@@ -31,7 +31,7 @@ const Menus = () => {
 
     return (
         <>
-            <div ref={sidebarRef} className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
+            <div className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
 
                 <div className="sidebar__container">
 
@@ -59,8 +59,8 @@ const Menus = () => {
                                 <NavbarLink name={"Sign-Up"} to={"/signup"} childen={""} />
 
                                 {/* Sidebar */}
-                                <button ref={sidebarRef} onClick={toggleSidebar} className="navbar__button navbar__button--hamburger">
-                                    <RxHamburgerMenu className="navbar__icon navbar__icon--hamburger" />
+                                <button onClick={toggleSidebar} className="navbar__button navbar__button--hamburger">
+                                    {isSidebarOpen ? <IoMdClose className="navbar__icon navbar__icon--hamburger" /> : <RxHamburgerMenu className="navbar__icon navbar__icon--hamburger" />}
                                 </button>
 
                             </div>

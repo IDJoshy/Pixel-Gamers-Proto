@@ -17,18 +17,29 @@
 
         &::after
         {
-            animation: sidebar-cubes-top 1s ease-in-out 1;
+            animation: sidebar-cubes-top-show 1s ease-in-out;
         }
 
         &::before
         {
-            animation: sidebar-cubes-bottom 1s ease-in-out 1;
+            animation: sidebar-cubes-bottom-show 1s ease-in-out 1;
         }
     }
 
     &--hidden
     {
         animation: sidebar-hide 1s ease-in-out;
+
+        &::after
+        {
+            animation: sidebar-cubes-top-hide 1s ease-in-out;
+        }
+
+        &::before
+        {
+            animation: sidebar-cubes-bottom-hide 1s ease-in-out 1;
+
+        }
     }
 
     //overflow: hidden;
@@ -43,6 +54,7 @@
         width: 5px;
         height: 5px;
         background-color: var(--color-border-line-hover);
+        animation-direction: normal;
 
     }
 
@@ -55,7 +67,7 @@
         width: 5px;
         height: 5px;
         background-color: var(--color-border-line-hover);
-        
+        animation-direction: normal;
     }
 
     &__container 
@@ -95,7 +107,7 @@
     }
 }
 
-@keyframes sidebar-cubes-top 
+@keyframes sidebar-cubes-top-show
 {
     0% {
         top: 50%;
@@ -112,7 +124,7 @@
     }
 }
 
-@keyframes sidebar-cubes-bottom 
+@keyframes sidebar-cubes-bottom-show
 {
     0% {
         bottom: 50%;
@@ -129,6 +141,44 @@
         bottom: 48px;
     }
 }
+
+@keyframes sidebar-cubes-top-hide
+{
+    0% {
+        top: 65px;
+    
+    }
+
+    50% {
+        top: 50%;
+        
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+
+@keyframes sidebar-cubes-bottom-hide
+{
+    0% {
+        bottom: 48px;
+        
+        
+    }
+
+    50% {
+        bottom: 50%;
+        
+    }
+
+
+    100% {
+        bottom: 50%;
+    }
+}
+
+
 
 @keyframes sidebar-initial {
     0%
