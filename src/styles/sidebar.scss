@@ -81,6 +81,20 @@
         animation: background-breath 12s ease-in-out infinite;
     }
 
+    &__overlay
+    {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 100%;
+        height: 100vh;
+        
+        z-index: 99;
+
+        backdrop-filter: blur(5px);
+        
+        opacity: 0.5;
+    }
 
 }
 
