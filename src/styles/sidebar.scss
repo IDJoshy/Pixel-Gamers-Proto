@@ -1,14 +1,34 @@
-.sidebar {
+.sidebar 
+{
     position: fixed;
     top: 0;
     right: 0px;
     width: 320px;
     min-height: 100vh;
     z-index: 99;
+    user-select: none;
+    
+    transition: right ease;
+
 
     &--active
     {
-        animation: sidebar-appear 1s ease-in-out 1;
+        animation: sidebar-show 1s ease-in-out;
+
+        &::after
+        {
+            animation: sidebar-cubes-top 1s ease-in-out 1;
+        }
+
+        &::before
+        {
+            animation: sidebar-cubes-bottom 1s ease-in-out 1;
+        }
+    }
+
+    &--hidden
+    {
+        animation: sidebar-hide 1s ease-in-out;
     }
 
     //overflow: hidden;
@@ -23,7 +43,7 @@
         width: 5px;
         height: 5px;
         background-color: var(--color-border-line-hover);
-        animation: sidebar-cubes-top 1s ease-in-out 1;
+
     }
 
     &::before {
@@ -35,7 +55,7 @@
         width: 5px;
         height: 5px;
         background-color: var(--color-border-line-hover);
-        animation: sidebar-cubes-bottom 1.75s ease-in-out 1;
+        
     }
 
     &__container 
@@ -52,7 +72,7 @@
 
 }
 
-@keyframes sidebar-appear {
+@keyframes sidebar-show {
 
     0% {
         right: -640px; 
@@ -64,6 +84,17 @@
     }
 }
 
+@keyframes sidebar-hide {
+
+    0% {
+        right: 0;
+    }
+
+    100% {
+        right: -640px;
+    }
+}
+
 @keyframes sidebar-cubes-top 
 {
     0% {
@@ -71,7 +102,7 @@
         
     }
 
-    75% {
+    50% {
         top: 50%;
         
     }
@@ -88,7 +119,7 @@
         
     }
 
-    75% {
+    50% {
         bottom: 50%;
         
     }
@@ -96,5 +127,17 @@
 
     100% {
         bottom: 48px;
+    }
+}
+
+@keyframes sidebar-initial {
+    0%
+    {
+        opacity: 0;
+    }
+
+    100%
+    {
+        opacity: 1;
     }
 }
