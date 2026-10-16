@@ -9,8 +9,10 @@ const NotFound = () =>
     return (
         <>
         <div className="notfound">
+            {/*
             <TbError404 className="notfound__icon"/>
             <p className="notfound__text notfound__text--error">Gulp! Algo salió mal</p>
+            */}
         </div>
         <Loader/>
         </>

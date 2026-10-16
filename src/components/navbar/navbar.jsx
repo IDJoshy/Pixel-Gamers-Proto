@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { IoMdHome } from "react-icons/io";
-import { CiSearch, CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
 import "../../styles/navbar.scss";
 
-import JoyStick from "../../assets/Joystick.png";
+import Pixel from "../../assets/pixel.png";
 
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 
 const NavBar = () => {
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <div className="navbar">
@@ -17,44 +19,31 @@ const NavBar = () => {
 
                 <ul className="navbar__ul navbar__ul--upper">
 
-                    <li className="navbar__item">
-
+                    <li className="navbar__item navbar__item--logo">
                         <Link className={`navbar__link navbar__link--logo`} href={`/`}>
-
-                            <img src={JoyStick} alt="Logo" className="navbar__logo" />
-                        
-                            {/*
-
-                            <div className="navbar__title">
-                                <span className="navbar__text navbar__text--title">
-                                    PIXEL <br /> Gamers
-                                </span>
-                            </div>
-                            
-                            */}
+                            <img className="navbar__logo" src={Pixel} alt="Pixel" />
                         </Link>
-
                     </li>
 
-                    <li className="navbar__item">
-                        
-                        <label className="navbar__search">
+                    <li className="navbar__border" />
 
-                            <CiSearch className="navbar__icon navbar__icon--search" />
-                            
-                            <input id="search-input" type="text" className="navbar__input navbar__text--input" placeholder="Buscar en Catálogo" />
+                    <li className="navbar__item navbar__item--links">
+                        <div className="navbar__buttons">
+                            <NavbarLink name={"Log-In"} to={"/login"} childen={""} />
+                            <NavbarLink name={"Sign-Up"} to={"/signup"} childen={""} />
 
-                        </label>
+                            {/* Hamburger Menu */}
+                            <button className="navbar__button navbar__button--hamburger">
+                                <RxHamburgerMenu className="navbar__icon navbar__icon--hamburger" />
+                            </button>
 
+                        </div>
                     </li>
 
-                    <li className="navbar__item"> 
-                        
-                    </li>
 
                 </ul>
 
-            </div>            
+            </div>
 
         </div>
     );
@@ -63,3 +52,15 @@ const NavBar = () => {
 
 
 export default NavBar;
+
+
+const NavbarLink = (props) => {
+    const [location, navigate] = useLocation();
+
+    return (
+        <Link className={`navbar__link navbar__link--button ${location === props.to ? "navbar__link--active" : ""}`} href={`${props.to}`}>
+            {props.childen}
+            {props.name}
+        </Link>
+    );
+}

@@ -11,14 +11,13 @@
 {
     padding: 0;
     margin: 0;
-    
+    transition: all 0.1s ease;
 }
 
 body
 {
     display: block;
-    
-    //background-color: var(--color-primary);
+    background-color: var(--color-primary);
 }
 
 
@@ -35,7 +34,10 @@ $themes:
     
         bg-gradient-first: #FFFFFF,
         bg-gradient-second: #E0EBF5,
-        bg-gradient-third: #75AADB
+        bg-gradient-third: #75AADB,
+
+        border-line: rgba(0, 0, 0, 0.25),
+        border-line-hover: rgba(0, 0, 0, 0.75)
         
     ),
     dark: 
@@ -49,7 +51,10 @@ $themes:
         
         bg-gradient-first: #000000,
         bg-gradient-second: #1C3D5A,
-        bg-gradient-third: #316ca0
+        bg-gradient-third: #316ca0,
+
+        border-line: rgba(255, 255, 255, 0.25),
+        border-line-hover: rgba(255, 255, 255, 0.75)
     )
 );
 
@@ -58,6 +63,7 @@ $themes:
     @each $name, $value in map.get($themes, light) 
     {
         --color-#{$name}: #{$value};
+        
     }
 
     @media (prefers-color-scheme: dark) 
@@ -66,7 +72,10 @@ $themes:
         {
         --color-#{$name}: #{$value};
         }
-    }
+
+        
+    }  
+
 }
 
 [data-theme="dark"] 
@@ -75,6 +84,8 @@ $themes:
     {
         --color-#{$name}: #{$value};
     }
+
+    --invert-color: invert(0%);
 }
 
 [data-theme="light"] 
@@ -83,6 +94,8 @@ $themes:
     {
         --color-#{$name}: #{$value};
     }
+
+    --invert-color: invert(100%);
 }
 
 @keyframes gradient-shift 

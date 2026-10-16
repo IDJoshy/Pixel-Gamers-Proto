@@ -7,7 +7,9 @@ const About = () => {
     return (
         <>
             <div className="about">
-
+                <p className="about__text about__text--title">
+                    
+                </p>
             </div>
 
             <Loader/>
