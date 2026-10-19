@@ -7,7 +7,7 @@
     height: 100vh;
     width: 100%;
 
-    background: linear-gradient(45deg, var(--color-bg-gradient-first) 15%, var(--color-bg-gradient-second) 66%, var(--color-bg-gradient-third) 100%);
+    background: linear-gradient(45deg, var(--color-bg-gradient-first-error) 15%, var(--color-bg-gradient-second-error) 66%, var(--color-bg-gradient-third-error) 100%);
     background-size: 200% 200%;
     animation: gradient-shift 8s ease alternate infinite;
     overflow: hidden;
@@ -36,18 +36,18 @@
     }
 
     &__text {
-        font-family: "Inconsolata", monospace;
+        font-family: "Share Tech Mono", monospace;
         color: var(--color-text);
 
         animation: fade 3s ease alternate;
 
         &--error {
-            font-weight: 600;
-            font-size: clamp(1rem, 3vw, 5rem);
+            font-weight: 400;
+            font-size: clamp(1rem, 2.75vw, 4rem);
 
             &::after {
                 display: inline-block;
-                animation: dotty steps(1, end) 1s infinite;
+                //animation: dotty steps(1, end) 1s infinite;
                 content: '';
             }
         }

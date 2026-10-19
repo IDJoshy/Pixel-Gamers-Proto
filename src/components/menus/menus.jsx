@@ -12,14 +12,14 @@ const Menus = () => {
 
     const [isSidebarOpen, setOpenSidebar] = useState(false);
     const toggleSidebar = () => setOpenSidebar((prev) => !prev);
-    
+
     return (
         <>
-            {isSidebarOpen ? 
+            {isSidebarOpen ?
 
-            <div className="sidebar__overlay" onClick={toggleSidebar} /> 
+                <div className="sidebar__overlay" onClick={toggleSidebar} />
 
-            : null}
+                : null}
 
             <div className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
 

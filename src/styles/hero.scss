@@ -1,0 +1,52 @@
+.hero
+{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 100px 0px 0px 30px;
+    overflow: hidden;
+
+    &__text
+    {
+        color: var(--color-text);
+
+        &--header
+        {
+            font-family: "Share Tech Mono", monospace;
+            font-weight: 600;
+            font-size: clamp(1rem, 1.75vw, 4rem);
+
+            color: var(--color-contrast);
+            
+            &::before
+            {
+                content: "> "; 
+
+                font-size: clamp(1rem, 2vw, 4rem);
+            }
+        }
+
+        &--title
+        {
+            font-family: "Inconsolata", monospace;
+            font-size: clamp(1rem, 5vw, 3rem);
+            margin-top: 25px;
+        }
+        
+        &--subtitle
+        {
+
+        }
+
+        &--body
+        {
+            font-family: "Inconsolata", monospace;
+            font-size: clamp(.75rem, 1.25vw, 2rem);
+        }
+    }
+}
