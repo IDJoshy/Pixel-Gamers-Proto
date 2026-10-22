@@ -193,6 +193,31 @@
         color: var(--color-text);
         user-select: none;
     }
+
+    @media screen and (max-width : 424px) 
+    {
+        &__logo
+        {
+            width: 50px;
+        }
+
+        &__item
+        {
+            &--logo
+            {
+                width: 60px;
+            }
+        }
+
+        &__link
+        {
+            &--button
+            {
+                font-size: 10px;
+            }
+        }
+        
+    }
 }
 
 @keyframes navbar-appear

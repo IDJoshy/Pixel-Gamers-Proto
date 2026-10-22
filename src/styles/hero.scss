@@ -1,15 +1,12 @@
 .hero
 {
-    width: 100%;
-    min-height: 100vh;
+    width: fit-content;
+    height: fit-content;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
-
-    padding: 100px 0px 0px 30px;
-    overflow: hidden;
 
     &__text
     {

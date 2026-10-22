@@ -8,6 +8,8 @@ import Pixel from "../../assets/pixel.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
+import ThemeToggleButton from "../theme/ThemeToggleButton";
+
 const Menus = () => {
 
     const [isSidebarOpen, setOpenSidebar] = useState(false);
@@ -24,6 +26,8 @@ const Menus = () => {
             <div className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
 
                 <div className="sidebar__container">
+
+                    <ThemeToggleButton/>
 
                 </div>
 
@@ -68,6 +72,18 @@ const Menus = () => {
 
 
 export default Menus;
+
+const SidebarLink = (props) => {
+    const [location, navigate] = useLocation();
+
+    return (
+        <Link className={`sidebar__link ${location === props.to ? "sidebar__link--active" : ""}`} href={`${props.to}`}>
+            {props.childen}
+            {props.name}
+        </Link>
+    );
+}
+
 
 
 const NavbarLink = (props) => {

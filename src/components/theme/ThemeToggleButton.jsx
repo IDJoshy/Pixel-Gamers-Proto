@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { CiSun } from "react-icons/ci";
 import { IoMoonOutline } from "react-icons/io5";
 
+import "../../styles/themetogglebutton.scss";
+
 
 const ThemeToggleButton = () => {
     const [theme, setTheme] = useState('light');
@@ -34,7 +36,7 @@ const ThemeToggleButton = () => {
     };
 
     return (
-        <button onClick={toggleTheme} aria-label="Cambiar tema" className="additional__link additional__link--theme" >
+        <button onClick={toggleTheme} aria-label="Cambiar tema" className="theme_toggle_button theme_toggle_button--theme" >
             {theme === 'light' ? <IoMoonOutline/> : <CiSun/>}
         </button>
     );
