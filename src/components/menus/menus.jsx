@@ -27,7 +27,21 @@ const Menus = () => {
 
                 <div className="sidebar__container">
 
-                    <ThemeToggleButton/>
+                    
+
+                    <ul className="sidebar__ul">
+
+                        <li className="sidebar__li"> 
+                            <p className="sidebar__text sidebar__text--header">
+                                Miscelaneos
+                            </p>
+                        </li>
+
+                        <li className="sidebar__li"> 
+
+                        </li>
+
+                    </ul>
 
                 </div>
 
@@ -73,11 +87,11 @@ const Menus = () => {
 
 export default Menus;
 
-const SidebarLink = (props) => {
+const SidebarCustomLink = (props) => {
     const [location, navigate] = useLocation();
 
     return (
-        <Link className={`sidebar__link ${location === props.to ? "sidebar__link--active" : ""}`} href={`${props.to}`}>
+        <Link className={`sidebar__custom_link ${location === props.to ? "sidebar__custom_link--active" : ""}`} href={`${props.to}`}>
             {props.childen}
             {props.name}
         </Link>

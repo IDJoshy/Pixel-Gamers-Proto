@@ -111,6 +111,19 @@
         opacity: 0.5;
     }
 
+    &__ul
+    {
+        list-style: none;
+    }
+
+    &__text 
+    {
+        &--ul
+        {
+            
+        }
+    }
+
 }
 
 @keyframes sidebar-show {
