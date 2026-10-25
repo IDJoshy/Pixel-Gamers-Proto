@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import "../../styles/navbar.scss";
-import "../../styles/sidebar.scss";
+import "../../styles/hamburger.scss";
 
 import Pixel from "../../assets/pixel.png";
 
@@ -12,34 +12,34 @@ import ThemeToggleButton from "../theme/ThemeToggleButton";
 
 const Menus = () => {
 
-    const [isSidebarOpen, setOpenSidebar] = useState(false);
-    const toggleSidebar = () => setOpenSidebar((prev) => !prev);
+    const [isHamburgerOpen, setOpenHamburger] = useState(false);
+
+    const toggleHamburger = () => setOpenHamburger((prev) => !prev);
 
     return (
         <>
-            {isSidebarOpen ?
+            {isHamburgerOpen ?
 
-                <div className="sidebar__overlay" onClick={toggleSidebar} />
+                <div className="hamburger__overlay" onClick={toggleHamburger} />
 
                 : null}
 
-            <div className={`sidebar ${isSidebarOpen ? "sidebar--active" : "sidebar--hidden"}`} style={isSidebarOpen ? { right: "0" } : { right: "-640px" }}>
+            <div className={`hamburger ${isHamburgerOpen ? "hamburger--active" : "hamburger--hidden"}`} style={isHamburgerOpen ? { right: "0" } : { right: "-640px" }}>
 
-                <div className="sidebar__container">
+                <div className="hamburger__container">
 
-                    
 
-                    <ul className="sidebar__ul">
+                    <ul className="hamburger__ul">
 
-                        <li className="sidebar__li"> 
-                            <p className="sidebar__text sidebar__text--header">
-                                Miscelaneos
+                        <li className="hamburger__li hamburger__li--header">
+                            <p className="hamburger__text hamburger__text--header">
+                                [ COMUNIDAD ]
                             </p>
                         </li>
 
-                        <li className="sidebar__li"> 
-
-                        </li>
+                        <HamburgerLink to={`/locations`} name={"Ubicaciones"} childen={""} />
+                        <HamburgerLink to={`/about`} name={"Acerca de Nosotros"} childen={""} />
+                        <HamburgerLink to={`/contact`} name={"Contacto"} childen={""} />
 
                     </ul>
 
@@ -66,9 +66,9 @@ const Menus = () => {
                                 <NavbarLink name={"Log-In"} to={"/login"} childen={""} />
                                 <NavbarLink name={"Sign-Up"} to={"/signup"} childen={""} />
 
-                                {/* Sidebar */}
-                                <button onClick={toggleSidebar} className="navbar__button navbar__button--hamburger">
-                                    {isSidebarOpen ? <IoMdClose className="navbar__icon navbar__icon--hamburger" /> : <RxHamburgerMenu className="navbar__icon navbar__icon--hamburger" />}
+                                {/* Hamburger */}
+                                <button onClick={toggleHamburger} className="navbar__button navbar__button--hamburger">
+                                    {isHamburgerOpen ? <IoMdClose className="navbar__icon navbar__icon--hamburger" /> : <RxHamburgerMenu className="navbar__icon navbar__icon--hamburger" />}
                                 </button>
 
                             </div>
@@ -87,14 +87,16 @@ const Menus = () => {
 
 export default Menus;
 
-const SidebarCustomLink = (props) => {
+const HamburgerLink = (props) => {
     const [location, navigate] = useLocation();
 
     return (
-        <Link className={`sidebar__custom_link ${location === props.to ? "sidebar__custom_link--active" : ""}`} href={`${props.to}`}>
-            {props.childen}
-            {props.name}
-        </Link>
+        <li className="hamburger__li hamburger__li--link">
+            <Link className={`hamburger__link ${location === props.to ? "hamburger__link--active" : ""}`} href={`${props.to}`}>
+                <p className="hamburger__text hamburger__text--link">{props.name}</p>
+                <p className="hamburger__text hamburger__text--arrow">{location === props.to ? `■` : `□`}</p>
+            </Link>
+        </li>
     );
 }
 
