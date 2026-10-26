@@ -1,4 +1,4 @@
-.additional {
+.footer-menu {
     position: fixed;
     z-index: 100;
     bottom: 0;
@@ -20,7 +20,7 @@
 
     gap: 2px;
 
-    animation: additional-appear 2s ease forwards;
+    animation: footer-menu-appear 2s ease forwards;
 
     &__separator {
         color: var(--color-text);
@@ -104,12 +104,26 @@
 
             &--links 
             {
-                display: none;  
+                justify-content: right;
+                width: fit-content;
             }
 
             &--socials 
             {
-                justify-content: center;
+                justify-content: left;
+            }
+        }
+
+        &__item
+        {
+            &--social
+            {
+                display: none;
+            }
+
+            &--link
+            {
+                display: none;
             }
         }
 
@@ -118,10 +132,11 @@
             display: none;  
         }
         
+        
     }
 }
 
-@keyframes additional-appear
+@keyframes footer-menu-appear
 {
     0% { 
         bottom: -1000px; 
