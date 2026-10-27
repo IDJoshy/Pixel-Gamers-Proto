@@ -1,10 +1,10 @@
-import { useState, Suspense , lazy, useEffect} from 'react';
+import { useState, Suspense, lazy, useEffect } from 'react';
 import { Route, Link, Router, Switch, useLocation } from 'wouter';
 
 //Components
 import Menus from './components/menus/menus';
 import FixedFooter from './components/fixed_footer/fixed_footer';
-const Footer = lazy(() => import('./components/footer/footer')); 
+const Footer = lazy(() => import('./components/footer/footer'));
 
 //Routes
 import NotFound from './routes/notfound';
@@ -12,6 +12,8 @@ import About from './routes/about';
 import Locations from './routes/locations';
 import Contact from './routes/contact';
 import Catalog from './routes/catalog';
+import Policy from './routes/policy';
+
 
 
 const ScrollToTop = () => {
@@ -44,6 +46,11 @@ function App() {
           <Route path={"/locations"} component={Locations} />
           <Route path={"/about"} component={About} />
           <Route path={"/contact"} component={Contact} />
+
+          {/* Policy */}
+          <Route path={"/policy/:type"} component={Policy} />
+
+          {/* 404 */}
           <Route component={NotFound} />
 
         </Switch>
@@ -51,7 +58,7 @@ function App() {
         <Suspense fallback={<></>}>
           <Footer />
         </Suspense>
-        
+
 
       </Router>
     </>
