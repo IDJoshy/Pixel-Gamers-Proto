@@ -1,8 +1,11 @@
 import "../styles/locations.scss";
 import Hero from "../components/hero/hero";
 import Loader from '../components/loader/loader';
-import LocationCard from "../components/location_card/location_card";
+import { Suspense , lazy } from "react";
 
+const LocationCard = lazy(() => import ("../components/location_card/location_card"));
+
+//import LocationCard from "../components/location_card/location_card";
 
 const locations_list = [
     {
@@ -42,11 +45,17 @@ const Locations = () => {
 
                 <ul className="locations__ul">
                     {
-                        locations_list.map((item) => (
-                            <li key={item.nombre} className="locations__li locations__li--location_card">
-                                <LocationCard url={item.url} nombre={item.nombre} direccion={item.direccion} piso={item.piso} local={item.local} />
-                            </li>
-                        ))
+                        <Suspense fallback={<></>}>
+
+                            {
+                                locations_list.map((item) => (
+                                    <li key={item.nombre} className="locations__li locations__li--location_card">
+                                        <LocationCard url={item.url} nombre={item.nombre} direccion={item.direccion} piso={item.piso} local={item.local} />
+                                    </li>
+                                ))
+                            }
+
+                        </Suspense>
                     }
                 </ul>
 

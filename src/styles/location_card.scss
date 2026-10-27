@@ -5,9 +5,9 @@
     height: fit-content;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-
+    gap: 30px;
 
     &__iframe {
         width: 300px;
@@ -18,8 +18,7 @@
         --webkit-backdrop-filter: blur(25px);
     }
 
-    &__container 
-    {
+    &__container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,14 +33,21 @@
 
         }
 
-        &--info 
-        {
+        &--info {
             width: 320px;
+            justify-content: left;
         }
     }
 
     &__text {
-        &--location {}
+
+        font-family: "JetBrains Mono", monospace;
+        color: var(--color-text);
+
+        &--location 
+        {
+            font-size: 30px;
+        }
 
         &--separator {}
 
