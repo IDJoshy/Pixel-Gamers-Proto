@@ -72,14 +72,14 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: left;
         flex-direction: column;
         gap: 25px;
     }
 
     &__li
     {
-        width: 100%;
+        width: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;
