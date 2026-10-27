@@ -10,6 +10,7 @@ const About = () => {
     return (
         <>
             <div className="about">
+                
                 <div className="about__container about__container--hero">
                     <Hero header={"Acerca de Nosotros"} title={"PIXEL GAMERS"} body={`En Pixel Gamers compartimos la pasión por los videojuegos.
                     Buscamos Ser la tienda de videojuegos y tecnología gamer de referencia en el mercado local,

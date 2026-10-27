@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Route, Link, Router, Switch } from 'wouter';
+import { useState, Suspense , lazy, useEffect} from 'react';
+import { Route, Link, Router, Switch, useLocation } from 'wouter';
 
 //Components
 import Menus from './components/menus/menus';
 import FixedFooter from './components/fixed_footer/fixed_footer';
+const Footer = lazy(() => import('./components/footer/footer')); 
 
 //Routes
 import NotFound from './routes/notfound';
@@ -12,15 +13,30 @@ import Locations from './routes/locations';
 import Contact from './routes/contact';
 import Catalog from './routes/catalog';
 
+
+const ScrollToTop = () => {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant',
+    });
+  }, [location]);
+
+  return null;
+};
+
 function App() {
 
   return (
     <>
-      <Router hook={undefined}>
+      <Router hook={undefined} >
 
         <Menus />
         <FixedFooter />
-
+        <ScrollToTop />
 
         <Switch>
 
@@ -32,6 +48,10 @@ function App() {
 
         </Switch>
 
+        <Suspense fallback={<></>}>
+          <Footer />
+        </Suspense>
+        
 
       </Router>
     </>

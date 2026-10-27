@@ -1,77 +1,112 @@
 .location_card {
-
-    width: fit-content;
+    width: 100%;
+    max-width: 850px; /* Limita el ancho en pantallas grandes para que no se estire demasiado */
     display: flex;
-    height: fit-content;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: wrap; /* Permite que el contenido salte a la siguiente línea en móviles */
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 
     padding: 25px;
-    gap: 30px;
+    gap: 25px;
 
-    border: 1px solid var(--color-border-line-hover);
+    /* Fondo oscuro semi-transparente para combinar con tu fondo animado */
+    background-color: rgba(15, 15, 20, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 
-    &__iframe {
-        width: 300px;
-        height: 300px;
-        border-radius: 5px;
-        border: 1px solid var(--color-border-line-hover);
-        backdrop-filter: blur(25px);
-        --webkit-backdrop-filter: blur(25px);
+    /* Efecto "Gamer" al pasar el cursor */
+    &:hover {
+        border-color: var(--color-contrast); /* Naranja corporativo */
+        box-shadow: 0 0 20px rgba(255, 85, 0, 0.15);
+        transform: translateY(-3px);
     }
 
-    &__container 
-    {
+    &__iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 250px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        /* Filtro para apagar los colores de Google Maps y mantener la estética oscura */
+        filter: grayscale(30%) contrast(1.1);
+        transition: filter 0.3s ease;
+
+        &:hover {
+            filter: grayscale(0%) contrast(1);
+        }
+    }
+
+    &__container {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: 15px;
-
-        height: 300px;
-
-        
 
         &--iframe {
-
-            width: 300px;
-
+            /* Crece, se encoge, pero intenta tener un mínimo de 300px */
+            flex: 1 1 300px;
+            min-height: 250px;
         }
 
         &--info {
-            width: 400px;
-            justify-content: left;
+            /* Toma el espacio restante */
+            flex: 1 1 350px; 
+            align-items: flex-start; /* Alinea el texto a la izquierda */
+            gap: 12px;
+            text-align: left;
         }
-
-        
     }
 
     &__text {
-
         width: 100%;
         font-family: "JetBrains Mono", monospace;
-        color: var(--color-text);
+        color: var(--color-text, #e0e0e0);
+        margin: 0;
 
-        
+        &--location {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-contrast, #ff5500);
+            display: flex;
+            align-items: center;
 
-        &--location 
-        {
-            font-size: 30px;
-            text-align: center;
+            /* Prefijo tipo consola para el título del local */
+            &::before {
+                content: "> ";
+                color: #ffffff;
+                margin-right: 8px;
+            }
         }
 
-        &--separator {}
+        &--separator {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+            margin: 5px 0;
+            display: block;
+        }
 
-        &--address {}
+        &--address {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
 
-        &--floor {}
+        &--floor, &--local {
+            font-size: 14px;
+            color: #999999;
+            margin-top: 5px;
+        }
 
-        &--floor_number {}
-
-        &-local {}
-
-        &--local_number {}
+        &--floor_number, &--local_number {
+            color: #ffffff;
+            font-weight: bold;
+            margin-left: 8px;
+        }
     }
 }
