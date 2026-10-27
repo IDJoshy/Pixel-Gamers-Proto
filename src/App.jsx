@@ -3,7 +3,7 @@ import { Route, Link, Router, Switch } from 'wouter';
 
 //Components
 import Menus from './components/menus/menus';
-import FooterMenu from './components/footer-menu/footer-menu';
+import FixedFooter from './components/fixed_footer/fixed_footer';
 
 //Routes
 import NotFound from './routes/notfound';
@@ -17,19 +17,22 @@ function App() {
   return (
     <>
       <Router hook={undefined}>
-        <div className='app'>
-          <Menus/>
-          <FooterMenu/>
-          <Switch>
-            <Route path={"/"} component={Catalog}/>
-            <Route path={"/locations"} component={Locations}/>
-            <Route path={"/about"} component={About}/>
-            <Route path={"/contact"} component={Contact}/>
-            <Route component={NotFound}/>
-            
-          </Switch>
-          
-        </div>
+
+        <Menus />
+        <FixedFooter />
+
+
+        <Switch>
+
+          <Route path={"/"} component={Catalog} />
+          <Route path={"/locations"} component={Locations} />
+          <Route path={"/about"} component={About} />
+          <Route path={"/contact"} component={Contact} />
+          <Route component={NotFound} />
+
+        </Switch>
+
+
       </Router>
     </>
   )
